@@ -2,39 +2,39 @@ const Crawler = require("crawler");
 const { CIUDAD_SEVA } = require("./URLS");
 const controller = require('./crawl.controller')
 
-let autorsCrawler = new Crawler({
+const ciudadCrawler = new Crawler({
     maxConnections: 10,
     // This will be called for each crawled page
     callback: (error, res, done) => {
         if (error) {
             console.log(error);
         } else {
-            const $ = res.$;
-            const namesDomElements = $('div.row.xs-center div.col-sm-6');
-            const methodReturn = controller.obtainAuthorsFromDom($);
-            console.log('==> RESPONSE: ', methodReturn);
+            const methodReturn = controller.obtainAuthorsFromDom(res.$);
+            console.log('==> Success on parsing authors obtained: ', methodReturn.length);
         }        
         done();
     }
 });
 
-autorsCrawler
+ciudadCrawler
+    //Consulta en la web los autores de cuentos
     .queue({
         uri: `${CIUDAD_SEVA}/biblioteca/indice-autor-cuentos/`,
+        callback: (error, res, done) => {
+            if (error) {
+                console.log(error);
+            } else {
+                const authorsData = controller.obtainAuthorsFromDom(res.$);
+                console.log('==> Success on parsing authors obtained: ', authorsData.length);
+                authorsData.map()
+                //TODO: INSERT METHOD FOR PG DATABASE
+            }        
+            done();
+        }    
     })
 
-
-
-
-/*
-
-    $('div.row.xs-center div.col-sm-6')
-        .toArray()
-        .map(ele => {
-            const [lastname, firstname] = $(ele).find('strong').text().split(',').map(x => x.trim().replace(':', ''))
-            const autor = { firstname, lastname }
-                console.log(autor)
-        })
-
-
-*/
+ciudadCrawler
+    //Consulta en la base los textos de los autores
+    .queue({
+        
+    })

@@ -4,6 +4,8 @@
   "private": true,
   "dependencies": {
     "crawler": "^1.2.1",
+    "dotenv": "^8.1.0",
+    "pg": "^7.12.1",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-scripts": "3.1.1"
@@ -11,7 +13,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test && mocha",
+    "crawl": "node ./scrapper/crawl.js",
+    "test": "npx mocha ./scrapper/test/crawl.spec.js",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {

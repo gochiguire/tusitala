@@ -1,6 +1,5 @@
-const Crawler = require("crawler");
-const { CIUDAD_SEVA } = require("./URLS"); 
-
+const crawl = require('./crawl');
+crawl();
 /*
 let autorsCrawler = new Crawler({
     maxConnections: 10,
