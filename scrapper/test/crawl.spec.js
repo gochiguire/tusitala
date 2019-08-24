@@ -1,5 +1,5 @@
 const assert = require('assert');
-const controller =  require('../scrapper/crawl.controller');
+const controller =  require('../crawl.controller');
 const cheerio = require('cheerio');
 const fs = require('fs');
 
