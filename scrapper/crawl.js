@@ -1,6 +1,6 @@
 const Crawler = require("crawler");
 const { CIUDAD_SEVA } = require("./URLS");
-const controller = require('./crawl.controller')
+const controller = require('./domRetrieceController')
 
 const ciudadCrawler = new Crawler({
     maxConnections: 10,
