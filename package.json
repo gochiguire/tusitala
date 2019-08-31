@@ -16,7 +16,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "crawl": "node ./scrapper/crawl.js",
-    "test": "npx mocha ./scrapper/test/crawl.spec.js",
+    "test": "npx mocha ./scrapper/test/crawl.spec.js PG_DATABASE:'tusitala-test'",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
