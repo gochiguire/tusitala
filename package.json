@@ -1,40 +1,42 @@
 {
-  "name": "tusitala",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "crawler": "^1.2.1",
-    "dotenv": "^8.1.0",
-    "jsonschema": "^1.2.4",
-    "pg": "^7.12.1",
-    "react": "^16.9.0",
-    "react-dom": "^16.9.0",
-    "react-scripts": "3.1.1",
-    "ship-hold": "^2.0.1"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "crawl": "node ./scrapper/crawl.js",
-    "test": "npx mocha ./scrapper/test/crawl.spec.js PG_DATABASE:'tusitala-test'",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "devDependencies": {
-    "mocha": "^6.2.0"
-  }
+	"name": "tusitala",
+	"version": "0.1.0",
+	"private": true,
+	"dependencies": {
+		"crawler": "^1.2.1",
+		"dotenv": "^8.1.0",
+		"jest": "^24.9.0",
+		"jsonschema": "^1.2.4",
+		"nock": "^10.0.6",
+		"pg": "^7.12.1",
+		"ship-hold": "^2.0.1"
+	},
+	"scripts": {
+		"start": "react-scripts start",
+		"build": "babel ./scrapper -d dist",
+		"crawl": "node ./scrapper/crawl.js",
+		"test": "npx jest scrapper/test",
+		"eject": "react-scripts eject"
+	},
+	"eslintConfig": {
+		"extends": "react-app"
+	},
+	"browserslist": {
+		"production": [
+			">0.2%",
+			"not dead",
+			"not op_mini all"
+		],
+		"development": [
+			"last 1 chrome version",
+			"last 1 firefox version",
+			"last 1 safari version"
+		]
+	},
+	"devDependencies": {
+		"@babel/cli": "^7.6.0",
+		"@babel/preset-env": "^7.6.0",
+		"babel": "^6.23.0",
+		"babel-plugin-transform-es2015-modules-commonjs": "^6.26.2"
+	}
 }

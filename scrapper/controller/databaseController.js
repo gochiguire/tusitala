@@ -2,7 +2,6 @@ const { shiphold } = require('ship-hold');
 const { validate } = require('jsonschema');
 const { authorSchema, textSchema } = require('../db/Schema');
 
-
 /**
  * Setup for the driver
  */
@@ -33,11 +32,15 @@ Author.hasMany(Text, 'texts');
  * Query methods sugared
  */
 
-const queryController = {
+module.exports = ({
 	insert: {
 		author: async record => {
 			if (!validate(record, authorSchema)) {
-				throw new Error('Error al insertar registros'); 
+				throw new Error(`
+					Registro no válido para actualizar.
+					Registro: ${record}
+					Esquema: ${authorSchema}
+				`);
 			}
 			const transactionResp = await Author.insert(record).run();	
 			console.log('\n==> INSERT RESPONSE: ', transactionResp);
@@ -54,21 +57,21 @@ const queryController = {
 	update: {
 		author: async record => {
 			if (!validate(record, authorSchema)) {
-				throw new Error(`Registro no válido para actualizar.
+				throw new Error(`
+					Registro no válido para actualizar.
 					Registro: ${record}
-					Esquema: ${authorSchema}`); 
+					Esquema: ${authorSchema}
+				`); 
 			}
 			const transactionResp = await Text.where('urlToPage', record.urlToPage).run();
-			console.log('\n==> INSERT RESPONSE: ', transactionResp);
+			console.log('\n==> UPDATE RESPONSE: ', transactionResp);
 		},
 		text: async record => {
 			if (!validate(record, authorSchema)) {
 				throw new Error('Error al insertar registros'); 
 			}
 			const transactionResp = await Text.where('urlToPage', record.urlToPage).run();
-			console.log('\n==> INSERT RESPONSE: ', transactionResp);
+			console.log('\n==> UPDATE RESPONSE: ', transactionResp);
 		}
 	}
-}
-
-module.exports = queryController;
+});

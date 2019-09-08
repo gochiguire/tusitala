@@ -1,21 +1,22 @@
-const assert = require('assert');
-const controller =  require('../domRetrieceController');
-const cheerio = require('cheerio');
-const fs = require('fs');
+import assert from 'assert';
+import cheerio from 'cheerio';
+import path from 'path';
+import fs from 'fs';
+import controller from '../controller/domController';
 
-describe('CrawlController', () => {
-    const authorsIndex = fs.readFileSync('./test/page/seva-author-index-test.html');
-    const storiesAuthorIndex = fs.readFileSync('./test/page/seva-author-story-index.html');
-    const storyContent = fs.readFileSync('./test/page/seva-text-story.html');
+describe('DOM Controller Test', () => {
+    const authorsIndex = fs.readFileSync(path.join(__dirname, '/page/seva-author-index-test.html'));
+    const storiesAuthorIndex = fs.readFileSync(path.join(__dirname, '/page/seva-author-story-index.html'));
+    const storyContent = fs.readFileSync(path.join(__dirname, '/page/seva-text-story.html'));
 
     describe('Seva author index parsing', () => {
       
-      it('Obtains data when parsing index author HTML body', () => {
+      it('When parsing authors list HTML body, obtains data ', () => {
         
         //Load CiudadSeva HTML testing file  
         const $ = cheerio.load(authorsIndex);
-        
         const authorsTestData = controller.obtainAuthorsFromDom($);
+
         assert(authorsTestData, "Index did not obtained data.");
         assert.strictEqual(authorsTestData.length, 20);
         assert.deepStrictEqual(
@@ -33,7 +34,7 @@ describe('CrawlController', () => {
         )
       })
 
-      it('Obtains stories name and urls', () => {
+      it('When parsing author stories list HTML body, obtains stories name and urls', () => {
 
         //Load CiudadSeva HTML testing file  
         const $ = cheerio.load(storiesAuthorIndex);
@@ -60,7 +61,7 @@ describe('CrawlController', () => {
         )        
       })
 
-      it('Obtain story content/text', () => {
+      it('When parsing a single storiy HTML body, obtain story content/text', () => {
 
         //Load CiudadSeva HTML testing file  
         const $ = cheerio.load(storyContent);
