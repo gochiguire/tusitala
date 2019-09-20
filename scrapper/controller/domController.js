@@ -1,4 +1,4 @@
-const crawlController = {
+export default {
     obtainAuthorsFromDom: $ => {
         const elements = $('div.row.xs-center div.col-sm-6').toArray();
         if (elements) {
@@ -68,5 +68,4 @@ const crawlController = {
             throw new Error(`Couldn't find any single DIV containing authors data on CIUDAD_SEVA.`);
         }
     }
-}
-module.exports = crawlController;
+};

@@ -7,6 +7,7 @@
 		"dotenv": "^8.1.0",
 		"jest": "^24.9.0",
 		"jsonschema": "^1.2.4",
+		"knex": "^0.19.3",
 		"nock": "^10.0.6",
 		"pg": "^7.12.1",
 		"ship-hold": "^2.0.1"
@@ -15,7 +16,7 @@
 		"start": "react-scripts start",
 		"build": "babel ./scrapper -d dist",
 		"crawl": "node ./scrapper/crawl.js",
-		"test": "npx jest scrapper/test",
+		"test": "npx jest scrapper/test NODE_ENV=test",
 		"eject": "react-scripts eject"
 	},
 	"eslintConfig": {
