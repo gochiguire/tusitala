@@ -5,9 +5,9 @@ import fs from 'fs';
 import controller from '../controller/domController';
 
 describe('DOM Controller Test', () => {
-    const authorsIndex = fs.readFileSync(path.join(__dirname, '/page/seva-author-index-test.html'));
-    const storiesAuthorIndex = fs.readFileSync(path.join(__dirname, '/page/seva-author-story-index.html'));
-    const storyContent = fs.readFileSync(path.join(__dirname, '/page/seva-text-story.html'));
+    const authorsIndex = fs.readFileSync(path.join(__dirname, '/_pages/_test_author_stories_list.html'));
+    const storiesAuthorIndex = fs.readFileSync(path.join(__dirname, '/_pages/_test_stories_list.html'));
+    const storyContent = fs.readFileSync(path.join(__dirname, '/_pages/_test_story.html'));
 
     describe('Seva author index parsing', () => {
       

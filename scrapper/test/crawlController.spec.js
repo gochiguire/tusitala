@@ -7,7 +7,7 @@ import controller from '../controller/crawlController';
 describe('CRAWL CiudadSeva Controller Test', () => {
 
     describe('Authors index', () => {
-        const authorsIndex = fs.readFileSync(path.join(__dirname, './page/seva-author-index-test.html'));
+        const authorsIndex = fs.readFileSync(path.join(__dirname, './_pages/_test_author_stories_list.html'));
         const scope = nock('https://ciudadseva.com')
             .get('/biblioteca/indice-autor-cuentos/')
             .reply(200, authorsIndex, {'content-type': 'text/html'});
@@ -21,7 +21,7 @@ describe('CRAWL CiudadSeva Controller Test', () => {
     })
     
     describe('Stories index from authors', () => {
-        const storiesAuthorIndex = fs.readFileSync(path.join(__dirname, './page/seva-author-story-index.html'));
+        const storiesAuthorIndex = fs.readFileSync(path.join(__dirname, './_pages/_test_author_stories_list.html'));
         const scope = nock('https://ciudadseva.com')
             .get('/autor/ciro-alegria/cuentos/')
             .reply(200, storiesAuthorIndex, {'content-type': 'text/html'});           
@@ -36,7 +36,7 @@ describe('CRAWL CiudadSeva Controller Test', () => {
     })
 
     describe('Stories content', () => {
-        const textData = fs.readFileSync(path.join(__dirname, './page/seva-text-story.html'));
+        const textData = fs.readFileSync(path.join(__dirname, './_pages/_test_stories_list.html'));
         const scope = nock('https://ciudadseva.com')
             .get('/texto/gorrioncito/')
             .reply(200, textData, {'content-type': 'text/html'});

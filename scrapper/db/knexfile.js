@@ -4,7 +4,7 @@ module.exports = {
     connection: {
       hostname: '127.0.0.1',
       user: 'postgres',
-      password: 'postgres',
+      password: '12345678',
       database: 'tusitala-test'
     },
     migrations: {
@@ -19,7 +19,7 @@ module.exports = {
     connection: {
       hostname: '127.0.0.1',
       user: 'postgres',
-      password: 'postgres',
+      password: '12345678',
       database: 'tusitala'
     },
     migrations: {

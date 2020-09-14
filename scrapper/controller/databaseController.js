@@ -4,11 +4,11 @@ const { shiphold } = require('ship-hold');
 // Setup for the driver
 let setup;
 switch (process.env.NODE_ENV) {
-	case 'production':
+	case 'development':
 		setup = {
 			hostname: '127.0.0.1',
 			user: 'postgres',
-			password: 'postgres',
+			password: '12345678',
 			database: 'tusitala'					
 		};
 		break;
@@ -16,7 +16,7 @@ switch (process.env.NODE_ENV) {
 		setup = {
 			hostname: '127.0.0.1',
 			user: 'postgres',
-			password: 'postgres',
+			password: '12345678',
 			database: 'tusitala-test'		
 		};
 		break;
